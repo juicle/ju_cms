@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>后台登录</title>
+<link rel="stylesheet" type="text/css" href="source/admin/template/css/style.css" />
+<script src="source/admin/template/js/jquery-1.4.4.min.js"></script>
+<script>
+setTimeout('newvercode()',1000);
+function newvercode(){
+    document.getElementById("vercodeimg").src="include/vercode.php?a="+Math.random();
+}	
+</script>
+</head>
+<body>
+	<div class="login">
+		<div class="login_form">
+			<div class="form_info">
+			<form action="?c=login&a=go" method="post">
+				<div class="field">
+					<label>用户名：</label>
+					<input type="text" class="text" size="20" name="adminuser">
+				</div>
+				<div class="field">
+					<label>密　码：</label>
+					<input type="password" class="text" size="20" name="adminpass">
+				</div>
+				<?php if($GLOBALS['G_Ji']['vercode']==1){?>
+				<div class="field">
+					<label>验证码：</label>
+					<input type="text" class="text" size="10" name="vercode">
+                    <img src="include/vercode.php" id="vercodeimg" width="63" height="27" onclick="newvercode();" style="cursor:pointer;line-height:24px;float:right" /> 
+				</div>
+				<?php }?>
+				<div class="field">
+					<label></label>
+					<input class="button" type="submit" value="" style="margin-left:50px;_margin-left:48px"></button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
